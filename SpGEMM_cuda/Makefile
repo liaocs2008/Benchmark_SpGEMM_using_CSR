@@ -15,5 +15,5 @@ LIBS = $(CUDA_LIBS)
 all: 
 	nvcc -O3 -m64 -arch=sm_35 -c bhsparse_cuda.cu -o bhsparse_cuda.o $(INCLUDES)
 	nvcc -O3 -m64 -arch=sm_35 -c ref.cu -o ref.o $(INCLUDES)
-	$(CC) -m64 -O3 main.cpp bhsparse.cpp bhsparse_cuda.o ref.o -o spgemm $(INCLUDES) $(LIBS)
+	nvcc -m64 -O3 main.cu bhsparse.cpp bhsparse_cuda.o ref.o -o spgemm $(INCLUDES) $(LIBS)
 
